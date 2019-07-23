@@ -150,3 +150,53 @@ describe("Shopping List", function() {
     );
   });
 });
+
+describe('Recipes', function () {
+  before(function(){
+    return runServer()
+  })
+
+  after(function(){
+    return closeServer()
+  })
+
+  it('should return a list of recipes', function(){
+    return chai.request(app)
+    .get('/recipes')
+    .then(function(res) {
+      expect(res.status).to.equal(200)
+      expect(res.body).to.be.a('array')
+      const body = res.body
+      const expectedKeys = ["name","id","ingredients"]
+      body.forEach(function(item) {
+        expect(item).to.be.a('object')
+        expect(item).to.include.keys(expectedKeys)
+        
+        })
+      })
+
+    })
+
+    it('should return a list of recipes', function(){
+      const expectedKeys = ["name","id","ingredients"]
+      const item = {"name": "chicken noodle soup","ingredients": ["chicken","broth","noodles"]}
+      return chai.request(app)
+      .post('/recipes')
+      .send(item)
+      .then(function(res) {
+        expect(res.status).to.equal(201)
+        expect(res.body).to.be.a('object')
+        expect(res.body).to.include.keys(expectedKeys)
+        expect(res.body.name).to.equal(item.name)
+        expect(res.body.ingredients).to.eql(item.ingredients)
+      })})
+
+    it('should update a list item', function(){
+      const updateData = {"name": "testDish", "ingredients":["TDD","BDD","Mocha","Chai"]}
+      return chai.request(app)
+      .put('/recipes')
+      .send()
+    })
+
+  })
+
