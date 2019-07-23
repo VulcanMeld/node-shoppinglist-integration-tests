@@ -192,10 +192,26 @@ describe('Recipes', function () {
       })})
 
     it('should update a list item', function(){
-      const updateData = {"name": "testDish", "ingredients":["TDD","BDD","Mocha","Chai"]}
+      const expectedKeys = ["name","id","ingredients"]
+      const updateData = {
+        "name": "testDish", 
+        "ingredients": ["TDD","BDD","Mocha","Chai"]
+      }
       return chai.request(app)
-      .put('/recipes')
-      .send()
+      .get('/recipes')
+      .then(function(res) {
+        updateData.id = res.body[0].id
+        return chai.request(app)
+        .put(`/recipes/${updateData.id}`)
+        .send(updateData)
+
+      })
+      .then(function(res) {
+        expect(res.status).to.equal(204)
+        expect(res.body).to.be.a('object')
+      }
+      )
+
     })
 
   })
