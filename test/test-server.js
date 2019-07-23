@@ -177,7 +177,7 @@ describe('Recipes', function () {
 
     })
 
-    it('should return a list of recipes', function(){
+    it('should add a new list item then return it', function(){
       const expectedKeys = ["name","id","ingredients"]
       const item = {"name": "chicken noodle soup","ingredients": ["chicken","broth","noodles"]}
       return chai.request(app)
