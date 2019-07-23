@@ -221,7 +221,7 @@ describe('Recipes', function () {
       .then(function(res) {
         deleteId = res.body[0].id
         return chai.request(app)
-        .delete(`/recipes/deleteId`)
+        .delete(`/recipes/${deleteId}`)
         .send(deleteId)
 
       })
