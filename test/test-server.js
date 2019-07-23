@@ -192,7 +192,6 @@ describe('Recipes', function () {
       })})
 
     it('should update a list item', function(){
-      const expectedKeys = ["name","id","ingredients"]
       const updateData = {
         "name": "testDish", 
         "ingredients": ["TDD","BDD","Mocha","Chai"]
@@ -211,6 +210,25 @@ describe('Recipes', function () {
         expect(res.body).to.be.a('object')
       }
       )
+
+    })
+
+    it('should delete a list item', function(){
+      let deleteId;
+
+      return chai.request(app)
+      .get('/recipes')
+      .then(function(res) {
+        deleteId = res.body[0].id
+        return chai.request(app)
+        .delete(`/recipes/deleteId`)
+        .send(deleteId)
+
+      })
+      .then(function(res) {
+        expect(res.status).to.equal(204)
+
+      })
 
     })
 
