@@ -1,2 +1,10 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: NX688UEFS29Ku6OU2lHAoq3zj3Y9JMwsCES2v8xzs9JHWUbRxmXC9bb85KHR1L4l/AFdqB3MR8Gj++QN0TMTAvaIs3WQzAoMaf6IxsY0AjWunCFEppE10eEgYUIA5xn3yukbF80JUL3jxGm+/5NpiGZVAj6kKmJLZvIBXRmr1uKKr9q+p3N1EbUjf2J/XabUf0QrnDv3MtEOiGcXZ/mC4cP+JyoE1w6i4C3KZsu72Wd3i9t5ULBVGiI4EDKteP2ceHh82O5mpI4AQWRdEBmZzBdtKbd8B88M7Ow3UqvAoP3ub6AOv2+Pk+ZFKo09+/uK10mXV0D+/nKYsoH9zl2IHG463/2+E2OFPzPSgkLvOJ5pqcNyea15wLITYpaKDCs/Q5rCdOAHbNioXlryY32/yCD3MeRNyk7dXUR7ZXMTfI3FDOWhdZwwhQi3QOIm7IapS0wTk0eEULfPgY27U0YwmHolsNC1llwp9TPQaDKbaPSZs6BT5oGXNMVHusglq7z3zuzcFEZzFKR7WjZLZwaestVZevSiLafFFWGUP1w1eNKolR4R56bPJVj/JnCxMixqUUa83loLEu3no3wxzUaI/vrsdSCWL3Rs5nHZqHJAAfotfpjdaPxe/vnfQQ6ICSH6d9dafFXzu0t+tiYBDXQqrTPVrZdPpn31G+Zu5sohgxM=
+  app: calm-river-52045
+  on:
+    repo: VulcanMeld/node-shoppinglist-integration-tests
+    branch: tests-for-recipes
